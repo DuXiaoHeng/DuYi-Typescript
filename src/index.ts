@@ -1,136 +1,50 @@
-// interface User {
-//     name: string
-//     age: number
-//     sayHello(): void
-// }
+class User {
+    readonly id: number //不能改变
+    gender: "男" | "女" = "男"
+    pid?: string
+    private _publishNumber: number = 3; //每天一共可以发布多少篇文章
+    private _curNumber: number = 0; //当前可以发布的文章数量
 
-// type User = {
-//     name: string
-//     age: number
-//     sayHello: () => void
-// }
+    constructor(public name: string, private _age: number) {
+        this.id = Math.random();
+    }
 
-// let u: User = {
-//     name: "sdfds",
-//     age: 33,
-//     sayHello() {
-//         console.log("asfadasfaf");
-//     }
-// }
+    set age(value: number) {
+        if (value < 0) {
+            this._age = 0;
+        }
+        else if (value > 200) {
+            this._age = 200;
+        }
+        else {
+            this._age = value;
+        }
+    }
 
-// type Condition = (n: number) => boolean
+    get age() {
+        return Math.floor(this._age);
+    }
 
-// interface Condition {
-//     (n: number): boolean
-// }
+    publish(title: string) {
+        if (this._curNumber < this._publishNumber) {
+            console.log("发布一篇文章：" + title);
+            this._curNumber++;
+        }
+        else {
+            console.log("你今日发布的文章数量已达到上限");
+        }
+    }
+}
 
-// function sum(numbers: number[], callBack: Condition) {
-//     let s = 0;
-//     numbers.forEach(n => {
-//         if (callBack(n)) {
-//             s += n;
-//         }
-//     })
-//     return s;
-// }
-
-// const result = sum([3, 4, 5, 7, 11], n => n % 2 !== 0);
-// console.log(result);
+const u = new User("aa", 22);
+//c#
+u.age = 1.5;
+console.log(u.age);
 
 
-// interface A {
-//     T1: string
-// }
-
-// interface B {
-//     T2: number
-// }
-
-// interface C extends A, B {
-//     T3: boolean
-// }
-
-// type A = {
-//     T1: string
-// }
-
-// type B = {
-//     T2: number
-// }
-
-// type C = {
-//     T1: number
-//     T3: boolean
-// } & A & B
-
-// let u: C = {
-//     T2: 33,
-//     T1:"43",
-//     T3: true
-// }
-
-// type User = {
-//     readonly id: string
-//     name: string
-//     age: number,
-//     readonly arr: readonly string[]
-// }
-
-// let u: User = {
-//     id: "123",
-//     name: "Asdf",
-//     age: 33,
-//     arr:["Sdf", "dfgdfg"]
-// }
-
-// const arr: readonly number[] = [3, 4, 6];
-
-// const arr: ReadonlyArray<number> = [3, 4, 6];
-
-// interface Duck {
-//     sound: "嘎嘎嘎"
-//     swin(): void
-// }
-
-// let person = {
-//     name: "伪装成鸭子的人",
-//     age: 11,
-//     sound: "嘎嘎嘎" as "嘎嘎嘎",
-//     swin() {
-//         console.log(this.name + "正在游泳，并发出了" + this.sound + "的声音");
-//     }
-// }
-
-// let duck: Duck = {
-//     sound: "嘎嘎嘎" as "嘎嘎嘎",
-//     swin() {
-//         console.log(this.name + "正在游泳，并发出了" + this.sound + "的声音");
-//     }
-// };
-
-// interface User {
-//     name?: string
-//     age: number
-// }
-
-// interface Condition {
-//     (n: number, i: number): boolean
-// }
-
-// function sum(numbers: number[], callBack: Condition) {
-//     let s = 0;
-//     for (let i = 0; i < numbers.length; i++) {
-//         const n = numbers[i];
-//         if (callBack(n, i)) {
-//             s += n;
-//         }
-//     }
-//     return s;
-// }
-
-// const result = sum([3, 4, 5, 7, 11], n => n % 2 !== 0);
-// console.log(result);
-
-//(value: number, index: number, array: number[]) => void
-
-[34, 4].forEach(it => console.log(it));
+u.publish("文章1")
+u.publish("文章2")
+u.publish("文章3")
+u.publish("文章4")
+u.publish("文章5")
+u.publish("文章6")
