@@ -1,50 +1,43 @@
-class User {
-    readonly id: number //不能改变
-    gender: "男" | "女" = "男"
-    pid?: string
-    private _publishNumber: number = 3; //每天一共可以发布多少篇文章
-    private _curNumber: number = 0; //当前可以发布的文章数量
+// interface hasNameProperty {
+//     name: string
+// }
 
-    constructor(public name: string, private _age: number) {
-        this.id = Math.random();
-    }
+// /**
+//  * 将某个对象的name属性的每个单词的首字母大小，然后将该对象返回
+//  */
+// function nameToUpperCase<T extends hasNameProperty>(obj: T): T {
+//     obj.name = obj.name
+//         .split(" ")
+//         .map(s => s[0].toUpperCase() + s.substr(1))
+//         .join(" ");
+//     return obj;
+// }
 
-    set age(value: number) {
-        if (value < 0) {
-            this._age = 0;
-        }
-        else if (value > 200) {
-            this._age = 200;
-        }
-        else {
-            this._age = value;
-        }
-    }
+// const o = {
+//     name:"kevin yuan",
+//     age:22,
+//     gender:"男"
+// }
 
-    get age() {
-        return Math.floor(this._age);
-    }
+// const newO = nameToUpperCase(o);
 
-    publish(title: string) {
-        if (this._curNumber < this._publishNumber) {
-            console.log("发布一篇文章：" + title);
-            this._curNumber++;
-        }
-        else {
-            console.log("你今日发布的文章数量已达到上限");
-        }
+// console.log(newO.name); //Kevin Yuan
+
+
+//将两个数组进行混合
+//[1,3,4] + ["a","b","c"] = [1, "a", 3, "b", 4, "c"]
+function mixinArray<T, K>(arr1: T[], arr2: K[]): (T | K)[] {
+    if (arr1.length != arr2.length) {
+        throw new Error("两个数组长度不等");
     }
+    let result: (T | K)[] = [];
+    for (let i = 0; i < arr1.length; i++) {
+        result.push(arr1[i]);
+        result.push(arr2[i]);
+    }
+    return result;
 }
 
-const u = new User("aa", 22);
-//c#
-u.age = 1.5;
-console.log(u.age);
+const result = mixinArray([1, 3, 4], ["a", "b", "c"]);
 
-
-u.publish("文章1")
-u.publish("文章2")
-u.publish("文章3")
-u.publish("文章4")
-u.publish("文章5")
-u.publish("文章6")
+result.forEach(r => console.log(r));
