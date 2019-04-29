@@ -1,59 +1,53 @@
-// class User {
-//     static users: User[] = [];
+// import { Animal, Lion, Tiger, Monkey, Dog } from "./animals";
+// import { IFireShow, IWisdomShow, hasFireShow, hasWisdomShow } from "./interfaces";
 
-//     constructor(
-//         public loginId: string,
-//         public loginPwd: string,
-//         public name: string,
-//         public age: number
-//     ) {
-//         //需要将新建的用户加入到数组中
-//         User.users.push(this);
+// const animals: Animal[] = [
+//     new Lion("王富贵", 12),
+//     new Tiger("坤坤", 21),
+//     new Monkey("小六", 1),
+//     new Dog("旺财", 3),
+//     new Dog("狗剩", 5)
+// ];
+
+// //1. 所有的动物打招呼
+
+// // animals.forEach(a => a.sayHello());
+
+// //2. 所有会进行火圈表演的动物，完成火圈表演
+// animals.forEach(a => {
+//     if (hasFireShow(a)) {
+//         a.singleFire();
+//         a.doubleFire();
 //     }
+// })
 
-//     sayHello() {
-//         console.log(`大家好，我叫${this.name}，今年${this.age}岁了，我的账号是${this.loginId}`)
+// //3. 所有会智慧表演的动物，完成智慧表演
+// animals.forEach(a => {
+//     if (hasWisdomShow(a)) {
+//         a.suanshuti();
+//         a.dance();
 //     }
+// })
 
-//     static login(loginId: string, loginPwd: string): User | undefined {
-//         return this.users.find(u => u.loginId === loginId && u.loginPwd === loginPwd)
-//     }
-// }
-
-// new User("u1", "123", "王富贵", 11);
-// new User("u2", "123", "坤坤", 18);
-// new User("u3", "123", "旺财", 22);
-
-// const result = User.login("u3", "123");
-// if(result){
-//     result.sayHello();
-// }
-// else{
-//     console.log("登录失败，账号或密码不正确")
-// }
-
-
-class Board {
-    width: number = 500;
-    height: number = 700;
-
-    init() {
-        console.log("初始化棋盘");
-    }
-
-    private constructor() { }
-
-    private static _board;
-
-    static createBoard(): Board {
-        if (this._board) {
-            return this._board;
-        }
-        this._board = new Board();
-        return this._board;
-    }
+class A {
+    a1: string = ""
+    a2: string = ""
+    a3: string = ""
 }
 
-const b1 = Board.createBoard();
-const b2 = Board.createBoard();
-console.log(b1 === b2);
+class B {
+    b1: number = 0;
+    b2: number = 0;
+    b3: number = 0;
+}
+
+interface C extends A, B { }
+
+const c: C = {
+    a1: "",
+    a2: "",
+    a3: "",
+    b1: 0,
+    b2: 3,
+    b3: 4
+}
