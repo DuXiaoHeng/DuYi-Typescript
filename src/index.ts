@@ -1,18 +1,29 @@
-class RegUser {
+import { type } from "os";
+
+interface User {
     loginId: string
+    loginpwd: string
+}
 
-    loginPwd: string
+interface Article {
+    title: string
+    publishDate: Date
+}
 
-    age: number
+//将User的所有属性值类型变成字符串，得到一个新类型
+type String<T> = {
+    [p in keyof T]: string
+}
 
-    pid: string
+type Readonly<T> = {
+    readonly [p in keyof T]: T[p]
+}
 
-    email: string
+type Partial<T> = {
+    [p in keyof T]?: T[p]
+}
 
-    /**
-     * 将用户保存到数据库
-     */
-    save() {
-        //通过后保存数据库
-    }
+const u: String<Article> = {
+    title: "Sfsdf",
+    publishDate: "sdf"
 }
