@@ -7,11 +7,12 @@
         "strictNullChecks": true,
         "removeComments": true,
         "noImplicitUseStrict": true,
-        "esModuleInterop":true,
-        "noEmitOnError":true,
-        "moduleResolution":"node",
+        "esModuleInterop": true,
+        "noEmitOnError": true,
+        "moduleResolution": "node",
         "noImplicitAny": true,
-        "noImplicitThis": true
+        "noImplicitThis": true,
+        "experimentalDecorators": true
     },
     "include": ["./src"]
 }
