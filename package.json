@@ -4,6 +4,7 @@
         "build": "rd /s /q dist & tsc"
     },
     "devDependencies": {
+        "@types/lodash": "^4.14.123",
         "@types/node": "^11.13.8"
     },
     "dependencies": {

@@ -13,7 +13,10 @@
         "noImplicitAny": true,
         "noImplicitThis": true,
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "declaration": true,
+        "sourceMap": true,
+        "typeRoots": ["./node_modules/@types", "./src/types"]
     },
-    "include": ["./src"]
+    "include": ["./src", "index.d.ts", "index.d.ts"]
 }
